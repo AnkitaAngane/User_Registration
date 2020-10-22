@@ -8,6 +8,7 @@ shopt -s extglob
 regex="^[A-Z]{1}[a-z]{2,}"
 regexMail="^([A-Za-z0-9+._-]*[A-Za-z0-9])+@[A-Za-z0-9]+[.A-Za-z]*[.A-Za-z]$"
 regexNumber="[0-9]{2,5}[[:space:]][[:digit:]]{10}$"
+regexpswd="[a-zA-Z0-9!@#$%^&-_]{8,}"
 
 echo "USER DETAILS"
 read -p "Enter a first name - " name
@@ -48,4 +49,15 @@ then
 else
         echo "Invalid Mobile Number"
 fi
+
+echo ""
+read -p "Enter a password - " pswd
+
+if [[ $pswd =~ $regexpswd ]]
+then
+        echo "Valid Password"
+else
+        echo "Invalid Password"
+fi
+
 
