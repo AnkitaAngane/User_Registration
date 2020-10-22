@@ -6,10 +6,10 @@
 shopt -s extglob
 
 regex="^[A-Z]{1}[a-z]{2,}"
-#regexMail="^[A-Za-z0-9]+([._+-][A-Za-z0-9]+)*@[A-Za-z0-9]+.[A-Za-z]{2,4}([.][A-Za-z]{2})$"
-#regexMail="^([A-Za-z0-9+._-]*[A-Za-z0-9])+@[A-Za-z0-9]+.[A-Za-z]{2,}$"
 regexMail="^([A-Za-z0-9+._-]*[A-Za-z0-9])+@[A-Za-z0-9]+[.A-Za-z]*[.A-Za-z]$"
+regexNumber="[0-9]{2,5}[[:space:]][[:digit:]]{10}$"
 
+echo "USER DETAILS"
 read -p "Enter a first name - " name
 
 if [[ $name =~ $regex ]]
@@ -38,3 +38,14 @@ then
 else
         echo "Invalid Mail"
 fi
+
+echo ""
+read -p "Enter a Mobile Number - " number
+
+if [[ $number =~ $regexNumber ]]
+then
+        echo "Valid Mobile Number"
+else
+        echo "Invalid Mobile Number"
+fi
+
