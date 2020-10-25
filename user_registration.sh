@@ -3,12 +3,12 @@
 #Author: Ankita Angane
 #User Registration Program and validation using regex
 
-shopt -s extglob
+#shopt -s extglob
 
 regex="^[A-Z]{1}[a-z]{2,}"
 regexMail="^([A-Za-z0-9+._-]*[A-Za-z0-9])+@[A-Za-z0-9]+[.A-Za-z]*[.A-Za-z]$"
 regexNumber="[0-9]{2,5}[[:space:]][[:digit:]]{10}$"
-regexpswd="[a-zA-Z0-9!@#$%^&-_]{8,}"
+#regexpswd="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
 
 echo "USER DETAILS"
 read -p "Enter a first name - " name
@@ -51,13 +51,23 @@ else
 fi
 
 echo ""
-read -p "Enter a password - " pswd
+read -p "Enter a password - " pass
 
-if [[ $pswd =~ $regexpswd ]]
-then
-        echo "Valid Password"
-else
-        echo "Invalid Password"
+count=`echo ${#pass}`
+
+if [[ $count -lt 8 ]];then
+	echo "Password length should be 8 character"
+	exit 1;
 fi
+
+echo $pass | grep "[A-Z]"
+
+if [[ $? -ne 0 ]];then
+	echo "Password Must contain atleast 1 upparcase character"
+	exit 2;
+else
+   echo "password is valid"
+fi
+
 
 
