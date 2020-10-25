@@ -60,10 +60,10 @@ if [[ $count -lt 8 ]];then
 	exit 1;
 fi
 
-echo $pass | grep "[A-Z]"
+echo $pass | grep "[A-Z]" | grep "[0-9]"
 
 if [[ $? -ne 0 ]];then
-	echo "Password Must contain atleast 1 upparcase character"
+	echo "Password Must contain atleast 1 upparcase and one numeric character"
 	exit 2;
 else
    echo "password is valid"
